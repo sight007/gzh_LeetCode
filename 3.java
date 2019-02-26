@@ -70,7 +70,20 @@ public class Solution{
 }
 
 
-
+/**
+ * 方法3：滑动窗口的优化
+ * 
+ * 	 在上面使用set时，总是发现如果下一个字符在set中时，需要把set左边的值一个一个的去除，直到重复的字符消失。
+ *  我们的目的就是删除重复字符在内的开头字符，所以，可以直接定位到重复字符，从它的下一个位置开始，去计算长度
+ *  
+ *  max()这个函数运用真是叹为观止。。。。666
+ * 
+ */
+public class Solution{
+	public int lengthOfLongestSubstring(String s) {
+		
+	}
+}
 
 
 

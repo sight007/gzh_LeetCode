@@ -87,19 +87,26 @@ public class Solution{
 		int ans = 0;
 		Map<Character, Interger> map = new HashMap<>();
 		
-		for() {
+		for(int i=0, j=0; j<n, i<n; j++) {
 			
-			//
+			//实现了从左边直接定位重复字符的跳跃
+			//map.get(s.charAt(j))根据map中put的数据情况，天然就实现了i+1
+			//A: i<map.get(s.charAt(j))  直接跳
+			//B: i>map.get(s.charAt(j))  发现一个新字符，它存在map中，但是滑动窗口已经把它划过去了，也就是说，这之间的字符必有重复，这才是影藏的难点
+			//max()综合了A和B两种情况，考虑的周全，不然按照普通的推算，直接就  i=map.get(s.charAt(j))
 			if(map.containsKey(s.charAt())) {
 				i = Math.max(map.get(s.charAt(j)), i);
 			}
 			
+			//这个操作 +1 操作是索引计算长度经常使用的，感觉类似于年减年加一年的操作
 			ans = Math.max(ans, j-i+1);
 			
 			//按照字符对应1，2，3，4......的形式，塞进
 			map.put(s.charAt(j), j+1);
 			
 		}
+		
+		return ans
 		
 	}
 }

@@ -77,10 +77,29 @@ public class Solution{
  *  我们的目的就是删除重复字符在内的开头字符，所以，可以直接定位到重复字符，从它的下一个位置开始，去计算长度
  *  
  *  max()这个函数运用真是叹为观止。。。。666
+ *  
+ *  这个map存放了字符串的所有字符
  * 
  */
 public class Solution{
 	public int lengthOfLongestSubstring(String s) {
+		int n = s.length();
+		int ans = 0;
+		Map<Character, Interger> map = new HashMap<>();
+		
+		for() {
+			
+			//
+			if(map.containsKey(s.charAt())) {
+				i = Math.max(map.get(s.charAt(j)), i);
+			}
+			
+			ans = Math.max(ans, j-i+1);
+			
+			//按照字符对应1，2，3，4......的形式，塞进
+			map.put(s.charAt(j), j+1);
+			
+		}
 		
 	}
 }

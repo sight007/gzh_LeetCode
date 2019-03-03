@@ -101,7 +101,7 @@ public class Solution{
 			//这个操作 +1 操作是索引计算长度经常使用的，感觉类似于年减年加一年的操作
 			ans = Math.max(ans, j-i+1);
 			
-			//按照字符对应1，2，3，4......的形式，塞进
+			//hashmap中一个key只能对应一个value，所以map.put()会覆盖重复key的value
 			map.put(s.charAt(j), j+1);
 			
 		}
@@ -112,7 +112,11 @@ public class Solution{
 }
 
 
-
+/**
+ *方法4：这个办法显然是上面算法的简单取代而已。
+ *用char在数组对中代表自己ASCII的值，还原了hashmap
+ *一定要注意用“abcdda”这个字符串去测试3和4方法，看看有什么不同
+ */
 
 
 

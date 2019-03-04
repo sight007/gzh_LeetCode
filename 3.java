@@ -115,9 +115,28 @@ public class Solution{
 /**
  *方法4：这个办法显然是上面算法的简单取代而已。
  *用char在数组对中代表自己ASCII的值，还原了hashmap
- *一定要注意用“abcdda”这个字符串去测试3和4方法，看看有什么不同
+ *一定要注意用“abcdda”这个字符串去测试3和4方法
+ *
+ *
+ *把每个字符用ASCII值对应相应的数组位置，对应的值按照字符出现的先后顺序赋予1,2,3,4.....重复的覆盖
+ *
+ *为什么 3和4是同一种是算法，但是map还要if判断？因为int[]天然实现了添加字符的操作。
+ *
+ *毫无疑问，4比3更加精简，更加体现出了滑动窗口优化的精髓。
  */
 
+public int lengthOfLongestSubstring(String s) {
+	int n = s.length(), ans = 0;
+	int[] index = new int[128];
+	
+	for(int i=0, j=0; j<n; j++){
+		i = Math.max(index[s.charAt(j), i]);
+		ans = Math.amx(ans, j-i+1);
+		index[s.charAt(j)] = j+1;
+		
+	}
+	
+}
 
 
 

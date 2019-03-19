@@ -2,5 +2,48 @@
  *给定一个字符串s,找到s中最长的回文子串。你可以假设s的最大长度为1000。
  *
  *这个题的最优解用到了动态规划，还是先把动态规划看一遍。
+ *
+ *中心扩展算法：长度为n的字符串总共有（2n-1）个中心，每个字符是一个，字符间隔也是一个。
+ *从中心开始，向两边逐一扩张，判断左右是否相等。
+ *
+ *这就是从最小的结构开始，逐渐向较大的结构扩散。
+ *
  */
+
  
+public String longestPalindrome(String s){
+	if(s==null or s.length()<1) return "";
+	int start=0, end=0;
+	for(int i; i<s.length(); i++){
+	
+		//找到i时，哪个中心点的回文子串更长
+		int len1=centerAround(s, i, i);
+		int len2=centerAround(s, i, i+1);
+		int len=Math.max(len1, len2);
+		
+		
+		//知道回文子串的长度，找到子串
+		if(len>start-end){
+			start=i-(len-1)/2;
+			end=1+len/2;
+		}
+		
+		
+	}
+	
+	return s.substring(start, end+1);
+	
+}
+
+
+
+//中间花开，一朵更比一朵大
+//返回花的直径
+public int centerAround(String s, int left, int right){
+	int L=left, R=right;
+	while(L>=0 && R<s.length() && s.charAt(L)==s.charAt(R)){
+		L--;
+		R++;
+	}
+	return R-L-1;
+}

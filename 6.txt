@@ -4,3 +4,40 @@
  *这道题的脑洞也是清奇，我直接就想起s难度动作Z字抖动，其实这里要求的是N字排列。
  *
  */
+ 
+/**
+ *方法一：“两个if + 累加” 巧妙地实现了方向的转折
+ *       第一个if，实现转折方向的控制
+ *		 第二个if，实现转折后的累加累加后变量
+ *        累加，   实现了最后的变化。
+ */
+ 
+public String convert(String s, int numRows){
+	if(numRows==1) return s;
+	
+	List<StringBuild> rows = new ArrayList<>();
+	for(int i=0; i<Math.max(numRows, s.length()); i++){
+		rows.add(new StringBuild());
+	}
+	
+	int curRow=0;
+	Boolean goingdown = false;
+	
+	for(char c : s.toCharArray()){
+		rows.get(curRow).append(c);
+		if(curRow==0 || curRow==s.length()-1){
+			goingdown = !goingdown;
+		}
+		
+		int add=0;
+		if(goingdown){
+			add=1;
+		}else{
+			add=-1;
+		}
+		
+		curRow=curRow+add; 
+		
+	}
+	
+}

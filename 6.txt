@@ -7,8 +7,8 @@
  
 /**
  *方法一：“两个if + 累加” 巧妙地实现了方向的转折
- *       第一个if，实现转折方向的控制
- *		 第二个if，实现转折后的累加累加后变量
+ *        第一个if，实现转折方向的控制
+ *		  第二个if，实现转折后的累加累加后变量
  *        累加，   实现了最后的变化。
  */
  
@@ -39,5 +39,42 @@ public String convert(String s, int numRows){
 		curRow=curRow+add; 
 		
 	}
+	
+}
+
+
+/*
+ *方法二：这个方法过于精巧，它是直接计算出了每行字符的位置。
+ *
+ */ 
+
+public String convert(String s, int numRows){
+	if(numRows == 1) return s;
+	
+	StringBuild sb = new StringBuild();
+	int n = s.length();
+	
+	/*
+	 *          a     g     m     s     y
+	 *          b   f h   l n   r t   x z
+	 *          c e   i k   o q   u w
+	 *          d     j     p     v
+	 *
+	 *	如上图26个字母4行排序，每个规则的竖行字符相隔（2*numRows-2），这个不仔细观察是看不出来的；
+	 *  第一行第一列，2*numRows-2+i
+	 *	间隔字符对于规则竖行字符的位置再减i
+	 *
+	 */
+	int cycleLen = 2 * numRows - 2;
+	for(int i=0; i<numRows; i++){
+		for(int j=0; j+i<n; j+=cycleLen){
+			sb.append(s.chartAt(j+i));
+			if(i != 0 && i != numRows-1 && j+cycleLen-i<n){
+				sb.append(s.chartAt(j+cycleLen-i));
+			}
+		}
+	}
+	
+	return sb.toString();
 	
 }

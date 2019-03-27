@@ -16,7 +16,7 @@
 
  
 /*
- *方法一：这个方法就是<取余数，乘以10，再加余数>这个过程的不断循环，if语句实现了上下限的检验
+ *这个方法就是<取余数，乘以10，再加余数>这个过程的不断循环，if语句实现了上下限的检验
  *
  *while循环之内三个变量的相互转换，以前常见的是两个变量的，这也是个亮点
  *
@@ -39,3 +39,7 @@ public int reverse(int x){
 
 
 
+//上面的if语句太过于优秀，比标准解法还简介。下面是标准方法的if判断。
+//-8 和 7 就代表了上下限的最后一个数字
+if(temp>Integer.MAX_VALUE/10 || (temp==Integer.MAX_VALUE/10 && x%10>7))   return 0;  //超出上限返回0
+if(temp>Integer.MAX_VALUE/10 || (temp==Integer.MAX_VALUE/10 && x%10<-8))) return 0;  //超出下限返回0

@@ -7,6 +7,6 @@ code is cheap show me the algorithm.
 
 一遍肯定是不够的，先从简单的开始。
 
-
+把难度为困难的先放下，等做完了在统一做
 
 

@@ -1,0 +1,78 @@
+/**
+ * 给定n个非负整数，a1, a2, a3, ... an, 每个数代表坐标中的一个点(i, ai)。在坐标内画n条垂直线，垂直线i的两个端点分别为(i, ai)和(i, 0).
+ * 找出其中的两条线，使得他们与x轴共同构成的容器可以容纳最多的水。
+ *
+ *
+ *
+ */
+ 
+
+/**
+ *方法一：暴力搜索法。把所有的可能性都试一遍
+ *
+ *	for(int i=0; i<hight.length; i++){
+ *		for(int j=i+1; j<hight.length; j++){
+ *          //your code	  
+ *		}
+ *	}
+ *
+ *  少年，上面的格式就是套路啊
+ *
+ */ 
+ public int maxArea(int[] hight){
+	 int area = 0;
+	 for(int i=0; i<hight.length; i++){
+		 for(int j=i+1; j<hight.length; j++){
+			 
+			 //木桶最大的盛水量取决于最短的木板
+			 //固定一个i，作为容器一端，依次选取后面的木板装水
+			 area = Math.max(area, Math.min(hight[i], hight[j])*(j-i));
+			 
+		 }
+	 }
+	 return area;
+ }
+
+ //复杂度为O(n*n)，计算所有(n-1),(n-2),(n-3),...,1种可能性的组合{总共n*(n-1)/2}
+ //空间复杂度是固定的，为O(1),不会随着n变化。 
+ 
+ 
+ 
+ 
+ 
+ 
+/**
+ * 方法二：
+ *
+ *
+ */
+ public int maxArea(int[] hight){
+	 int area=0;
+	 int left=0;
+	 int right=hight.length-1;
+	 
+	 while(left<right){
+		 area = Math.max(area, Math.min(hight[left], hight[right])*(right-left));
+		 
+		 if(hight[left] < hight[right]){
+			 left++;
+		 }else{
+			 right++;
+		 }
+	 }
+	 
+	 return area;
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

@@ -5,3 +5,56 @@
  *
  */
  
+/**
+ * 方法一：水平扫描法
+ * 
+ * 假设一组字符串的最长公共前缀为LCP(S1...Sn)，那么LCP(S1...Sn​)=LCP(LCP(LCP(S1​,S2​),S3​),...Sn​)
+ *
+ * 也就是说，找到两个字符串的最长公共子串prefix，然后prefix与后面的一个字符串求最长公共子串。
+ * 后面的每个字符串都做这样的操作。
+ *
+ * int indexOf(String str)：返回指定字符在字符串中第一次出现处的索引，如果此字符串中没有这样的字符，则返回 -1。
+ * 所以当等于0时，就表示出现了前缀公共子串
+ *
+ */
+ 
+ public static String longestCommonPrefix(String[] strs) {
+		  
+	if(strs.length() == "") return "";
+	
+	String prefix = strs[0];
+		 
+	for(int i=1; i<strs.length; i++) {
+		while(strs[i].indexOf(prefix) != 0) {
+			prefix = prefix.substring(0, prefix.length()-1);
+			if(prefix == "") return "";
+		}
+	}
+	
+	return prefix;
+	
+}
+
+//时间复杂度为O(S),S表示字符串中字符数量的总和。最坏情况是，只有两个字符串，且只有第一个字符相同。
+
+
+
+/**
+ * 方法二：水平扫描
+ * 
+ *
+ *
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+

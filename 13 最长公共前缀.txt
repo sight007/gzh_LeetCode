@@ -42,13 +42,35 @@
 /**
  * 方法二：水平扫描
  * 
- *
+ *	对于前面的方法，如果最后一个字符串非常短，比较次数依旧为S，效率不高
+ *  如果把所有的字符串列成一列，每次只比较一个字符是否相等，这样可以避免方法一的情况。
  *
  */
 
+public static String longestCommonPrefix3(String[] strs) {
+	
+	if(strs == null || strs.length == 0) return "";
+	
+	for(int i=0; i<strs[0].length(); i++){
+		char c = strs[0].charAt(i);
+		for(int j=1; j<strs.length; j++) {
+				
+			//如果相同位置上的字符不相同，那就说明肯定不是公共子串
+			//如果长度小于检查的子串，那就说明肯定不是公共子串    i==strs[j].length() strs[j]比
+			if(strs[j].charAt(i) != c || i==strs[j].length()) {
+				return strs[0].substring(0, i);
+			}
+		}
+	}
+	
+	return strs[0];
+}
 
-
-
+/**
+ *	分治法：
+ *
+ *
+ */
 
 
 

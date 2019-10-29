@@ -13,6 +13,36 @@
 
 这根本不是easy的难度，下面依次记录`KMP（Knuth-Morris-Pratt算法）`、`Sunday算法`、`BM（Boyer-Moore算法）`、`Horsepool算法` 。
 
+#### 解法0（暴力法，不推荐）：
+
+两个字符串，一个一个开头字符对照着找。
+
+~~~java
+public static int searchBaoLi(String pat, String text) {
+		
+		int M = pat.length();
+		int N = text.length();
+		
+		for(int i=0; i<(N-M+1); i++) {
+			int j = 0;
+			for(j=0; j<M; j++) {
+				char a = text.charAt(i+j);
+				char b = pat.charAt(j);
+				if(a != b) {
+					break;
+				}
+			}
+			if(j==M) {
+				return i;
+			}
+		}
+    
+		return -1;
+	}
+~~~
+
+**时间复杂度：O（M*N）**
+
 
 
 #### 解法一（KMP算法）：
